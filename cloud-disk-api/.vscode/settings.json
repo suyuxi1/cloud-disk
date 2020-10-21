@@ -1,0 +1,77 @@
+{
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    //窗口不缩放
+    "window.zoomLevel": 0,
+    //工作区相关配置:主题、图标、菜单等
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.preferredHighContrastColorTheme": "Atom One Dark",
+    "workbench.preferredLightColorTheme": "Atom One Dark",
+    "workbench.preferredDarkColorTheme": "Atom One Dark",
+    "workbench.colorCustomizations": {},
+    //工作区活动栏可见
+    "workbench.activityBar.visible": true,
+    //菜单栏默认可见
+    "window.menuBarVisibility": "default",
+    //禁用面包屑
+    "breadcrumbs.enabled": false,
+    //资源管理器删除时不显示确认对话框
+    "explorer.confirmDelete": false,
+    //设置默认打开的终端为bash
+    // "terminal.integrated.shell.windows": "D:\\ProgramFiles\\Git\\bin\\bash.exe",
+    //editor相关配置
+    //禁用小地图
+    "editor.minimap.enabled": false,
+    //编辑区字体大小
+    "editor.fontSize": 16,
+    //编辑区字体跟随鼠标滚轮改变大小
+    "editor.mouseWheelZoom": true,
+    //编辑的或者暂停的时候，不对代码格式化
+    "editor.formatOnPaste": false,
+    "editor.formatOnType": false,
+    //保存代码的时候，自动格式化
+    "editor.formatOnSave": false,
+    //git相关配置
+    "gitlens.views.repositories.branches.layout": "list",
+    //git自动fetch
+    "git.autofetch": true,
+    //自动stash
+    "git.autoStash": true,
+    //服务器不显示消息对话框
+    "liveServer.settings.donotShowInfoMsg": true,
+    //js随着文件移动自动更新导入
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    //插件相关配置
+    "[vue]": {
+        "editor.defaultFormatter": "octref.vetur"
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    },
+    //格式化代码配置
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    //格式化代码prettier的配置
+    // prettier:每行在这个字符数内整合代码，如果你的屏幕较宽分辨率较高可以适当加大
+    "prettier.printWidth": 120,
+    // prettier:是否在每行末尾加上分号
+    "prettier.semi": false,
+    // prettier:如果为true，将使用单行否则使用双引号
+    "prettier.singleQuote": true,
+    // vetur:对html的内容使用js-beautify-html
+    "vetur.format.defaultFormatter.html": "js-beautify-html",
+    "files.autoSave": "off",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.colorTheme": "Atom One Dark",
+    "editor.codeActionsOnSave": null
+}
