@@ -4,7 +4,7 @@
 			<template v-if="checkCount === 0">
 				<text slot="left" class="font-md ml-3">首页</text>
 				<template slot="right">
-					<view style="width: 60rpx;height: 60rpx;" class="flex align-center justify-center bg-icon rounded-circle mr-3">
+					<view style="width: 60rpx;height: 60rpx;" class="flex align-center justify-center bg-icon rounded-circle mr-3" @tap="openAddDialog">
 						<text class="iconfont icon-zengjia"></text>
 					</view>
 					<view style="width: 60rpx;height: 60rpx;" class="flex align-center justify-center bg-icon rounded-circle mr-3">
@@ -59,6 +59,23 @@
 		<!-- 重命名，通过ref定义不同的对话框对象，不同操作弹出的dialog是不同的对象 -->
 		<f-dialog ref="rename"><input type="text" value="" v-model="renameValue" class="flex-1 bg-light rounded px-2" style="height: 95rpx;" placeholder="重命名" /></f-dialog>
 
+		<!-- 新建文件夹，使用自定义弹出层，使用input作为插槽，绑定data中的newdirname变量 -->
+		<f-dialog ref="newdir">
+			<input type="text" value="" v-model="newdirname" class="flex-1 bg-light rounded px-2" style="height: 95rpx;" placeholder="新建文件夹名称" />
+		</f-dialog>
+
+		<!-- 添加操作条，type表示弹出的位置类型，具体取值都在popup子组件中 -->
+		<uni-popup ref="add" type="bottom">
+			<view class="bg-white flex" style="height: 200rpx;">
+				<!-- 遍历addList数组，纵向flex，为每个操作分配等高的空间，每个操作有图标和名称组成 -->
+				<view class="flex-1 flex align-center justify-center flex-column" hover-class="bg-light" v-for="(item, index) in addList" :key="index" @tap="handleAddEvent(item)">
+					<text class="rounded-circle bg-light iconfont flex align-center justify-center" :class="item.icon + ' ' + item.color"></text>
+					<!-- 每个操作的名称 -->
+					<text class="font text-muted">{{ item.name }}</text>
+				</view>
+			</view>
+		</uni-popup>
+
 		<!-- <view v-for="(item, index) in items" :key="index">
 				<view class="flex align-center p-2 border-bottom border-light-secondary">
 					<image :src="item.icon" mode="" style="width: 80rpx; height: 80rpx" class="px-3"></image>
@@ -80,17 +97,20 @@ import uniSearchBar from '../../components/uni-search-bar/uni-search-bar.vue';
 import indexCard from '../../components/index-card/index-card.vue';
 import fList from '../../components/common/f-list.vue';
 import fDialog from '../../components/common/f-dialog.vue';
+import uniPopup from '../../components/uni-ui/uni-popup/uni-popup.vue';
 export default {
 	components: {
 		navBar,
 		uniSearchBar,
 		indexCard,
 		fList,
-		fDialog
+		fDialog,
+		uniPopup
 	},
 	data() {
 		return {
 			renameValue: '',
+			newdirname: '',
 			list: [
 				{
 					type: 'dir',
@@ -121,6 +141,28 @@ export default {
 					name: '压缩包.rar',
 					create_time: '2020-10-21 08:00',
 					checked: false
+				}
+			],
+			addList: [
+				{
+					icon: 'icon-file-b-6',
+					color: 'text-success',
+					name: '上传图片'
+				},
+				{
+					icon: 'icon-file-b-9',
+					color: 'text-primary',
+					name: '上传视频'
+				},
+				{
+					icon: 'icon-file-b-8',
+					color: 'text-muted',
+					name: '上传文件'
+				},
+				{
+					icon: 'icon-file-b-2',
+					color: 'text-warning',
+					name: '新建文件夹'
 				}
 			]
 		};
@@ -173,6 +215,41 @@ export default {
 						}
 						//更新改元素name值，实时看到效果
 						this.checkList[0].name = this.renameValue;
+						close();
+					});
+					break;
+				default:
+					break;
+			}
+		},
+
+		//打开添加操作条
+		openAddDialog() {
+			this.$refs.add.open();
+		},
+
+		//处理添加操作条的各种事件
+		handleAddEvent(item) {
+			this.$refs.add.close();
+			switch (item.name) {
+				case '新建文件夹':
+					this.$refs.newdir.open(close => {
+						if (this.newdirname == '') {
+							return uni.showToast({
+								title: '文件夹名称不能为空',
+								icon: 'name'
+							});
+						}
+						//模拟请求服务器，这里先添加到list数组中
+						this.list.push({
+							type: 'dir',
+							name: this.newdirname,
+							create_time: '2020-10-22 17:00'
+						});
+						uni.showToast({
+							title: '新建文件夹成功',
+							icon: 'name'
+						});
 						close();
 					});
 					break;

@@ -245,7 +245,12 @@ var render = function() {
                       {
                         staticClass: _vm._$g(5, "sc"),
                         staticStyle: { width: "60rpx", height: "60rpx" },
-                        attrs: { _i: 5 }
+                        attrs: { _i: 5 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
                       },
                       [
                         _c("v-uni-text", {
@@ -439,6 +444,77 @@ var render = function() {
           })
         ],
         1
+      ),
+      _c(
+        "f-dialog",
+        { ref: "newdir", attrs: { _i: 27 } },
+        [
+          _c("v-uni-input", {
+            staticClass: _vm._$g(28, "sc"),
+            staticStyle: { height: "95rpx" },
+            attrs: {
+              type: "text",
+              value: "",
+              placeholder: "新建文件夹名称",
+              _i: 28
+            },
+            model: {
+              value: _vm._$g(28, "v-model"),
+              callback: function($$v) {
+                _vm.$handleVModelEvent(28, $$v)
+              },
+              expression: "newdirname"
+            }
+          })
+        ],
+        1
+      ),
+      _c(
+        "uni-popup",
+        { ref: "add", attrs: { _i: 29 } },
+        [
+          _c(
+            "v-uni-view",
+            {
+              staticClass: _vm._$g(30, "sc"),
+              staticStyle: { height: "200rpx" },
+              attrs: { _i: 30 }
+            },
+            _vm._l(_vm._$g(31, "f"), function(item, index, $22, $32) {
+              return _c(
+                "v-uni-view",
+                {
+                  key: item,
+                  staticClass: _vm._$g("31-" + $32, "sc"),
+                  attrs: { "hover-class": "bg-light", _i: "31-" + $32 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event)
+                    }
+                  }
+                },
+                [
+                  _c("v-uni-text", {
+                    staticClass: _vm._$g("32-" + $32, "sc"),
+                    class: _vm._$g("32-" + $32, "c"),
+                    attrs: { _i: "32-" + $32 }
+                  }),
+                  _c(
+                    "v-uni-text",
+                    {
+                      staticClass: _vm._$g("33-" + $32, "sc"),
+                      attrs: { _i: "33-" + $32 }
+                    },
+                    [_vm._v(_vm._$g("33-" + $32, "t0-0"))]
+                  )
+                ],
+                1
+              )
+            }),
+            1
+          )
+        ],
+        1
       )
     ],
     2
@@ -479,7 +555,8 @@ var _navBar = _interopRequireDefault(__webpack_require__(/*! ../../components/co
 var _uniSearchBar = _interopRequireDefault(__webpack_require__(/*! ../../components/uni-search-bar/uni-search-bar.vue */ 27));
 var _indexCard = _interopRequireDefault(__webpack_require__(/*! ../../components/index-card/index-card.vue */ 45));
 var _fList = _interopRequireDefault(__webpack_require__(/*! ../../components/common/f-list.vue */ 50));
-var _fDialog = _interopRequireDefault(__webpack_require__(/*! ../../components/common/f-dialog.vue */ 59));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+var _fDialog = _interopRequireDefault(__webpack_require__(/*! ../../components/common/f-dialog.vue */ 59));
+var _uniPopup = _interopRequireDefault(__webpack_require__(/*! ../../components/uni-ui/uni-popup/uni-popup.vue */ 64));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
 
   data: function data() {
@@ -492,7 +569,8 @@ var _fDialog = _interopRequireDefault(__webpack_require__(/*! ../../components/c
     'uniSearchBar': _uniSearchBar.default,
     'indexCard': _indexCard.default,
     'fList': _fList.default,
-    'fDialog': _fDialog.default } };exports.default = _default;
+    'fDialog': _fDialog.default,
+    'uniPopup': _uniPopup.default } };exports.default = _default;
 
 /***/ }),
 /* 7 */
