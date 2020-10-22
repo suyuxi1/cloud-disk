@@ -7,11 +7,17 @@
 				<view style="width: 60rpx;height: 60rpx;" class="flex align-center justify-center bg-icon rounded-circle mr-3"><text class="iconfont icon-gengduo"></text></view>
 			</template>
 		</nav-bar>
-		<view>
-			<!-- 设置搜索框 -->
-			<uni-search-bar placeholder="搜索网盘文件" maxlength="100" :radius="20"></uni-search-bar>
-			
-			<!-- <view v-for="(item, index) in items" :key="index">
+		<!-- 设置搜索框 -->
+		<!-- <uni-search-bar placeholder="搜索网盘文件" maxlength="100" :radius="20"></uni-search-bar> -->
+		<view class="px-3 py-2">
+			<view class="position-relative">
+				<view class="flex align-center justify-center text-light-muted" style="height: 70rpx; width: 70rpx; position: absolute; top: 0; left: 0;">
+					<text class="iconfont icon-sousuo"></text>
+				</view>
+				<input type="text" style="height: 70rpx; padding-left: 70rpx;" value="" class="bg-light font rounded-circle" placeholder="搜素网盘文件" />
+			</view>
+		</view>
+		<!-- <view v-for="(item, index) in items" :key="index">
 				<view class="flex align-center p-2 border-bottom border-light-secondary">
 					<image :src="item.icon" mode="" style="width: 80rpx; height: 80rpx" class="px-3"></image>
 					<view class="flex flex-column">
@@ -20,10 +26,12 @@
 					</view>
 				</view>
 			</view> -->
-			
-			<!-- 调用index-card组件 -->
-			<block v-for="(item, index) in items" :key="index"><index-card :item="item" :index="index"></index-card></block>
-		</view>
+
+		<!-- 调用index-card组件 -->
+		<!-- <block v-for="(item, index) in items" :key="index"><index-card :item="item" :index="index"></index-card></block> -->
+
+		<!-- 调用f-list组件 -->
+		<f-list v-for="(item, index) in list" :key="index" :item="item" :index="index" @select="select"></f-list>
 	</view>
 </template>
 
@@ -31,39 +39,46 @@
 import navBar from '../../components/common/nav-bar.vue';
 import uniSearchBar from '../../components/uni-search-bar/uni-search-bar.vue';
 import indexCard from '../../components/index-card/index-card.vue';
+import fList from '../../components/common/f-list.vue';
 export default {
 	components: {
 		navBar,
 		uniSearchBar,
-		indexCard
+		indexCard,
+		fList
 	},
 	data() {
 		return {
-			items: [
+			list: [
 				{
-					icon: '../../static/home/file.png',
+					type: 'dir',
 					name: '我的笔记',
-					time: '2020-10-21'
+					create_time: '2020-10-21 08:00',
+					checked: false
 				},
 				{
-					icon: '../../static/home/picture.png',
-					name: '图片',
-					time: '2020-10-21'
+					type: 'image',
+					name: '风景.jpg',
+					create_time: '2020-10-21 08:00',
+					checked: false
 				},
 				{
-					icon: '../../static/home/video.png',
-					name: '视频',
-					time: '2020-10-21'
+					type: 'video',
+					name: 'uniapp实战教程.mp4',
+					create_time: '2020-10-21 08:00',
+					checked: false
 				},
 				{
-					icon: '../../static/home/text.png',
-					name: '笔记',
-					time: '2020-10-21'
+					type: 'text',
+					name: '记事本.txt',
+					create_time: '2020-10-21 08:00',
+					checked: false
 				},
 				{
-					icon: '../../static/home/package.png',
-					name: '压缩文件',
-					time: '2020-10-21'
+					type: 'none',
+					name: '压缩包.rar',
+					create_time: '2020-10-21 08:00',
+					checked: false
 				}
 			]
 		};
@@ -77,7 +92,11 @@ export default {
 			}
 		});
 	},
-	methods: {}
+	methods: {
+		select(e) {
+			this.list[e.index].checked = e.value;
+		}
+	}
 };
 </script>
 
