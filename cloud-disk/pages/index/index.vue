@@ -45,12 +45,16 @@
 					v-for="(item, index) in actions"
 					:key="index"
 					hover-class="bg-hover-primary"
+					@click="handleBottomEvent(item)"
 				>
 					<text class="iconfont" :class="item.icon"></text>
 					{{ item.name }}
 				</view>
 			</view>
 		</view>
+
+		<!-- 是否要删除 -->
+		<f-dialog ref="dialog">是否删除选中的文件？</f-dialog>
 
 		<!-- <view v-for="(item, index) in items" :key="index">
 				<view class="flex align-center p-2 border-bottom border-light-secondary">
@@ -72,12 +76,14 @@ import navBar from '../../components/common/nav-bar.vue';
 import uniSearchBar from '../../components/uni-search-bar/uni-search-bar.vue';
 import indexCard from '../../components/index-card/index-card.vue';
 import fList from '../../components/common/f-list.vue';
+import fDialog from '../../components/common/f-dialog.vue';
 export default {
 	components: {
 		navBar,
 		uniSearchBar,
 		indexCard,
-		fList
+		fList,
+		fDialog
 	},
 	data() {
 		return {
@@ -133,6 +139,27 @@ export default {
 			this.list.forEach(item => {
 				item.checked = checked;
 			});
+		},
+		//处理底部操作条事件，这里仅对删除做了处理
+		handleBottomEvent(item) {
+			switch (item.name) {
+				case '删除':
+					this.$refs.dialog.open(close => {
+						//对list进行过滤，留下未被选中的
+						this.list = this.list.filter(item => !item.checked);
+						close();
+						uni.showToast({
+							title: '删除成功',
+							icon: 'none'
+						});
+						//在这里可以写点击删除需要做的回调事件，这里先在控制台模拟，实际需要把checkList移除掉
+						// console.log('删除文件');
+						// console.log(this.checkList);
+					});
+					break;
+				default:
+					break;
+			}
 		}
 	},
 	computed: {
