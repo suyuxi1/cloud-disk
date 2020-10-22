@@ -28,6 +28,30 @@
 				<input type="text" style="height: 70rpx; padding-left: 70rpx;" value="" class="bg-light font rounded-circle" placeholder="搜素网盘文件" />
 			</view>
 		</view>
+		<!-- 调用f-list组件 -->
+		<f-list v-for="(item, index) in list" :key="index" :item="item" :index="index" @select="select"></f-list>
+
+		<!-- 底部操作条 -->
+		<!-- 选中个数大于0才会出现这个操作条 -->
+		<view v-if="checkCount > 0">
+			<!-- 这里要留出一定的高度，因为底部操作条需要被固定在底部，并空出底部tabbar高度的地方 -->
+			<view class="" style="height: 115rpx;"></view>
+			<!-- 操作条容器的样式，高度，颜色，固定在底部，垂直方向拉升效果 -->
+			<view class="flex align-stretch bg-primary text-white fixed-bottom" style="height: 115rpx;">
+				<!-- 根据元素个数等分容器，所以要么四个等分，要么两个等分，行高的修改可距离变得合理，点击还会变色：hover-class -->
+				<view
+					class="flex-1 flex flex-column align-center justify-center"
+					style="line-height: 1.5;"
+					v-for="(item, index) in actions"
+					:key="index"
+					hover-class="bg-hover-primary"
+				>
+					<text class="iconfont" :class="item.icon"></text>
+					{{ item.name }}
+				</view>
+			</view>
+		</view>
+
 		<!-- <view v-for="(item, index) in items" :key="index">
 				<view class="flex align-center p-2 border-bottom border-light-secondary">
 					<image :src="item.icon" mode="" style="width: 80rpx; height: 80rpx" class="px-3"></image>
@@ -40,9 +64,6 @@
 
 		<!-- 调用index-card组件 -->
 		<!-- <block v-for="(item, index) in items" :key="index"><index-card :item="item" :index="index"></index-card></block> -->
-
-		<!-- 调用f-list组件 -->
-		<f-list v-for="(item, index) in list" :key="index" :item="item" :index="index" @select="select"></f-list>
 	</view>
 </template>
 
@@ -121,6 +142,38 @@ export default {
 		},
 		checkCount() {
 			return this.checkList.length;
+		},
+		actions() {
+			if (this.checkCount > 1) {
+				return [
+					{
+						icon: 'icon-xiazai',
+						name: '下载'
+					},
+					{
+						icon: 'icon-shanchu',
+						name: '删除'
+					}
+				];
+			}
+			return [
+				{
+					icon: 'icon-xiazai',
+					name: '下载'
+				},
+				{
+					icon: 'icon-fenxiang-1',
+					name: '分享'
+				},
+				{
+					icon: 'icon-shanchu',
+					name: '删除'
+				},
+				{
+					icon: 'icon-chongmingming',
+					name: '重命名'
+				}
+			];
 		}
 	}
 };
