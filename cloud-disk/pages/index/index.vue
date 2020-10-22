@@ -10,6 +10,7 @@
 		<view>
 			<!-- 设置搜索框 -->
 			<uni-search-bar placeholder="搜索网盘文件" maxlength="100" :radius="20"></uni-search-bar>
+			
 			<!-- <view v-for="(item, index) in items" :key="index">
 				<view class="flex align-center p-2 border-bottom border-light-secondary">
 					<image :src="item.icon" mode="" style="width: 80rpx; height: 80rpx" class="px-3"></image>
@@ -19,6 +20,8 @@
 					</view>
 				</view>
 			</view> -->
+			
+			<!-- 调用index-card组件 -->
 			<block v-for="(item, index) in items" :key="index"><index-card :item="item" :index="index"></index-card></block>
 		</view>
 	</view>

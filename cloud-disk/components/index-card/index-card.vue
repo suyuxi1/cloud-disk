@@ -11,8 +11,7 @@
 <script>
 export default {
 	props: {
-		item: Object,
-		index: Number
+		item: Object
 	},
 	data() {
 		return {};
