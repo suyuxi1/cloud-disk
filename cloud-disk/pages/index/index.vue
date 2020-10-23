@@ -28,6 +28,7 @@
 				<input type="text" style="height: 70rpx; padding-left: 70rpx;" value="" class="bg-light font rounded-circle" placeholder="搜素网盘文件" />
 			</view>
 		</view>
+
 		<!-- 调用f-list组件 -->
 		<f-list v-for="(item, index) in list" :key="index" :item="item" @click="doEvent(item)" :index="index" @select="select"></f-list>
 
@@ -128,6 +129,7 @@ export default {
 				{
 					type: 'video',
 					name: 'uniapp实战教程.mp4',
+					data: 'https://johnnycc.oss-cn-beijing.aliyuncs.com/zl.mp4',
 					create_time: '2020-10-21 08:00',
 					checked: false
 				},
@@ -283,6 +285,12 @@ export default {
 					uni.previewImage({
 						current: item.data,
 						urls: images.map(item => item.data)
+					});
+					break;
+				case 'video':
+					console.log('进入视频');
+					uni.navigateTo({
+						url: '../video/video?url=' + item.data + '&title=' + item.name
 					});
 					break;
 				default:
