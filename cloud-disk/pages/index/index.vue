@@ -7,7 +7,7 @@
 					<view style="width: 60rpx;height: 60rpx;" class="flex align-center justify-center bg-icon rounded-circle mr-3" @tap="openAddDialog">
 						<text class="iconfont icon-zengjia"></text>
 					</view>
-					<view style="width: 60rpx;height: 60rpx;" class="flex align-center justify-center bg-icon rounded-circle mr-3">
+					<view style="width: 60rpx;height: 60rpx;" class="flex align-center justify-center bg-icon rounded-circle mr-3" @click="openSortDialog">
 						<text class="iconfont icon-gengduo"></text>
 					</view>
 				</template>
@@ -73,6 +73,22 @@
 					<text class="rounded-circle bg-light iconfont flex align-center justify-center" :class="item.icon + ' ' + item.color"></text>
 					<!-- 每个操作的名称 -->
 					<text class="font text-muted">{{ item.name }}</text>
+				</view>
+			</view>
+		</uni-popup>
+
+		<!-- 排序框，底部弹出，遍历排序操作数组，为当前索引项绑定文字蓝色样式 -->
+		<uni-popup ref="sort" type="bottom">
+			<view class="bg-white">
+				<view
+					v-for="(item, index) in sortOptions"
+					:key="index"
+					class="flex align-center justify-center py-3 font border-bottom border-light-secondary"
+					:class="index === sortIndex ? 'text-main' : 'text-dark'"
+					hover-class="bg-light"
+					@click="changSort(index)"
+				>
+					{{ item.name }}
 				</view>
 			</view>
 		</uni-popup>
@@ -181,6 +197,15 @@ export default {
 					color: 'text-warning',
 					name: '新建文件夹'
 				}
+			],
+			sortIndex: 0,
+			sortOptions: [
+				{
+					name: '按名称排列'
+				},
+				{
+					name: '按时间排序'
+				}
 			]
 		};
 	},
@@ -278,7 +303,8 @@ export default {
 		// 列表点击事件处理
 		doEvent(item) {
 			switch (item.type) {
-				case 'image': //预览图片
+				//预览图片
+				case 'image':
 					let images = this.list.filter(item => {
 						return item.type === 'image';
 					});
@@ -287,6 +313,7 @@ export default {
 						urls: images.map(item => item.data)
 					});
 					break;
+				//视频播放
 				case 'video':
 					console.log('进入视频');
 					uni.navigateTo({
@@ -296,8 +323,18 @@ export default {
 				default:
 					break;
 			}
+		},
+
+		//切换排序
+		changSort(index) {
+			this.sortIndex = index;
+			this.$refs.sort.close();
+		},
+		openSortDialog() {
+			this.$refs.sort.open();
 		}
 	},
+
 	computed: {
 		//选中列表
 		checkList() {
