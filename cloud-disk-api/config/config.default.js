@@ -16,7 +16,7 @@ module.exports = (appInfo) => {
   config.keys = appInfo.name + '_1603250595001_5802'
 
   // add your middleware config here
-  config.middleware = ['errorHandler']
+  config.middleware = ['errorHandler', 'auth']
 
   config.security = {
     // 关闭 csrf
@@ -34,6 +34,10 @@ module.exports = (appInfo) => {
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
+  }
+  //这些端点的请求需要token鉴权
+  config.auth = {
+    match: ['/logout', '/upload', '/getSize', '/file', '/share'],
   }
   config.sequelize = {
     dialect: 'mysql',
