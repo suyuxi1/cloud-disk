@@ -29,7 +29,7 @@
 			</view>
 		</view>
 		<!-- 调用f-list组件 -->
-		<f-list v-for="(item, index) in list" :key="index" :item="item" :index="index" @select="select"></f-list>
+		<f-list v-for="(item, index) in list" :key="index" :item="item" @click="doEvent(item)" :index="index" @select="select"></f-list>
 
 		<!-- 底部操作条 -->
 		<!-- 选中个数大于0才会出现这个操作条 -->
@@ -120,7 +120,8 @@ export default {
 				},
 				{
 					type: 'image',
-					name: '风景.jpg',
+					name: '图片.jpg',
+					data: 'https://images.pexels.com/photos/5303464/pexels-photo-5303464.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
 					create_time: '2020-10-21 08:00',
 					checked: false
 				},
@@ -139,6 +140,20 @@ export default {
 				{
 					type: 'none',
 					name: '压缩包.rar',
+					create_time: '2020-10-21 08:00',
+					checked: false
+				},
+				{
+					type: 'image',
+					name: '图片1.jpg',
+					data: 'https://images.pexels.com/photos/5327007/pexels-photo-5327007.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+					create_time: '2020-10-21 08:00',
+					checked: false
+				},
+				{
+					type: 'image',
+					name: '图片2.jpg',
+					data: 'https://images.pexels.com/photos/5327931/pexels-photo-5327931.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
 					create_time: '2020-10-21 08:00',
 					checked: false
 				}
@@ -251,6 +266,23 @@ export default {
 							icon: 'name'
 						});
 						close();
+					});
+					break;
+				default:
+					break;
+			}
+		},
+
+		// 列表点击事件处理
+		doEvent(item) {
+			switch (item.type) {
+				case 'image': //预览图片
+					let images = this.list.filter(item => {
+						return item.type === 'image';
+					});
+					uni.previewImage({
+						current: item.data,
+						urls: images.map(item => item.data)
 					});
 					break;
 				default:

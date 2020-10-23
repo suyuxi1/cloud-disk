@@ -1,6 +1,10 @@
 {
   "usingComponents": {
+    "nav-bar": "/components/common/nav-bar",
     "uni-search-bar": "/components/uni-search-bar/uni-search-bar",
-    "nav-bar": "/components/common/nav-bar"
+    "index-card": "/components/index-card/index-card",
+    "f-list": "/components/common/f-list",
+    "f-dialog": "/components/common/f-dialog",
+    "uni-popup": "/components/uni-ui/uni-popup/uni-popup"
   }
 }
