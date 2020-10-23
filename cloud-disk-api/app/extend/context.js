@@ -10,7 +10,15 @@ module.exports = {
     this.body = { msg, data }
     this.status = code
   },
-  ismobile(ctx) {
+  // 生成token
+  getToken(value) {
+    return this.app.jwt.sign(value, this.app.config.jwt.secret)
+  },
+  // 生成唯一ID
+  genID(length) {
+    return Number(Math.random().toString().substr(3, length) + Date.now()).toString(36)
+  },
+  ismobile() {
     let userAgent = this.request.header['user-agent'].toLowerCase()
     let pat_phone = /ipad|iphone os|midp|rv:1.2.3.4|ucweb|android|windows ce|windows mobile/
     return pat_phone.test(userAgent)
