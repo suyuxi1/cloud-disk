@@ -14,17 +14,33 @@
 				"enablePullDownRefresh": false
 			}
 
+		}, {
+			"path": "pages/my/my",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/list/list",
+			"style": {
+				"navigationBarTitleText": "传输列表",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"color": "#333333",
+							"colorPressed": "#009cFF",
+							"float": "right",
+							"fontSize": "22px",
+							"fontSrc": "/static/iconfont.ttf",
+							"text": "\ue64a"
+						}]
+					}
+				}
+			}
+
 		}
-	    ,{
-            "path" : "pages/my/my",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
@@ -44,6 +60,7 @@
 		}, {
 			"iconPath": "static/tabbar/list.png",
 			"selectedIconPath": "static/tabbar/list-selected.png",
+			"pagePath": "pages/list/list",
 			"text": "传输"
 		}, {
 			"iconPath": "static/tabbar/my.png",

@@ -166,14 +166,16 @@ export default {
 					name: '图片1.jpg',
 					data: 'https://images.pexels.com/photos/5327007/pexels-photo-5327007.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
 					create_time: '2020-10-21 08:00',
-					checked: false
+					checked: false,
+					download: 100
 				},
 				{
 					type: 'image',
 					name: '图片2.jpg',
 					data: 'https://images.pexels.com/photos/5327931/pexels-photo-5327931.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
 					create_time: '2020-10-21 08:00',
-					checked: false
+					checked: false,
+					download: 80
 				}
 			],
 			addList: [
