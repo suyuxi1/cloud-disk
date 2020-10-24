@@ -138,14 +138,14 @@ export default {
 				{
 					type: 'image',
 					name: '图片.jpg',
-					data: 'https://images.pexels.com/photos/5303464/pexels-photo-5303464.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+					data: 'https://yuxis.oss-cn-beijing.aliyuncs.com/img/c10dtax56680000.png',
 					create_time: '2020-10-21 08:00',
 					checked: false
 				},
 				{
 					type: 'video',
 					name: 'uniapp实战教程.mp4',
-					data: 'https://johnnycc.oss-cn-beijing.aliyuncs.com/zl.mp4',
+					data: 'https://yuxis.oss-cn-beijing.aliyuncs.com/document/6f504rh95so0000.mp4',
 					create_time: '2020-10-21 08:00',
 					checked: false
 				},
