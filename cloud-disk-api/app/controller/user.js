@@ -109,12 +109,12 @@ class UserController extends Controller {
 
   // 退出登录
   async logout() {
-    const { ctx, service } = this;
-    const currentUserId = ctx.authUser.id;
-    if (!await service.cache.remove('user_' + currentUserId)) {
-      ctx.throw(400, '退出登录失败');
+    const { ctx, service } = this
+    const currentUserId = ctx.authUser.id
+    if (!(await service.cache.remove('user_' + currentUserId))) {
+      ctx.throw(400, '退出登录失败')
     }
-    ctx.apiSuccess('退出登录成功');
+    ctx.apiSuccess('退出登录成功')
   }
   // 验证密码
   checkPassword(password, hash_password) {
@@ -124,6 +124,15 @@ class UserController extends Controller {
       this.ctx.throw(400, '密码错误')
     }
     return true
+  }
+
+  //剩余容量
+  async getSize() {
+    const { ctx, service } = this
+    return ctx.apiSuccess({
+      total_size: ctx.authUser.total_size,
+      used_size: ctx.authUser.used_size,
+    })
   }
 }
 

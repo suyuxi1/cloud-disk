@@ -85,6 +85,8 @@ class FileController extends Controller {
 
     ctx.apiFail('上传失败')
   }
+
+  
 }
 
 module.exports = FileController
