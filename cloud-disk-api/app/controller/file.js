@@ -223,7 +223,7 @@ class FileController extends Controller {
       },
     })
     let size = 0
-    files.forEach((item) => {
+    files.forEach(item => {
       size = size + item.size
     })
     let res = await app.model.File.destroy({

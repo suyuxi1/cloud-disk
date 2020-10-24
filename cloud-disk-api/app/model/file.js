@@ -66,37 +66,37 @@ module.exports = (app) => {
   })
 
   // 监听批量删除
-  // File.afterBulkDestroy(async (data, option) => {
-  //   console.log('批量删除后', data.where.id)
-  //   if (data.where.id) {
-  //     app.model.File.destroy({
-  //       where: {
-  //         file_id: data.where.id,
-  //         user_id: data.where.user_id,
-  //       },
-  //     })
-  //   }
-  // })
-  // 删除后
   File.afterBulkDestroy(async (data, option) => {
-    console.log('删除后', data.where)
-    let files = await app.model.File.findAll({
-      where: {
-        file_id: data.where.id,
-        user_id: data.where.user_id,
-        isdir: 1,
-      },
-    })
-
-    let ids = files.map((item) => item.id)
-    if (ids.length > 0) {
+    console.log('批量删除后', data.where.id)
+    if (data.where.id) {
       app.model.File.destroy({
         where: {
-          id: ids,
+          file_id: data.where.id,
           user_id: data.where.user_id,
         },
       })
     }
   })
+  // 删除后
+  // File.afterBulkDestroy(async (data, option) => {
+  //   console.log('删除后', data.where)
+  //   let files = await app.model.File.findAll({
+  //     where: {
+  //       file_id: data.where.id,
+  //       user_id: data.where.user_id,
+  //       isdir: 1,
+  //     },
+  //   })
+
+  //   let ids = files.map((item) => item.id)
+  //   if (ids.length > 0) {
+  //     app.model.File.destroy({
+  //       where: {
+  //         id: ids,
+  //         user_id: data.where.user_id,
+  //       },
+  //     })
+  //   }
+  // })
   return File
 }
