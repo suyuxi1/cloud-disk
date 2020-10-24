@@ -18,18 +18,20 @@ module.exports = (app) => {
   //剩余容量
   router.get('/getsize', controller.user.getSize)
   //文件列表
-  router.get('/file', controller.file.list);
+  router.get('/file', controller.file.list)
   //创建文件
-  router.post('/file/createdir', controller.file.createdir);
+  router.post('/file/createdir', controller.file.createdir)
   //重命名
-  router.post('/file/rename', controller.file.rename);
+  router.post('/file/rename', controller.file.rename)
   //批量删除
-  router.post('/file/delete', controller.file.delete);
+  router.post('/file/delete', controller.file.delete)
   //搜索文件
-  router.get('/file/search', controller.file.search);
+  router.get('/file/search', controller.file.search)
 
   //创建分享
-  router.post('/share/create', controller.share.create);
+  router.post('/share/create', controller.share.create)
   //我的分享列表
-  router.get('/share/list', controller.share.list);
+  router.get('/share/list', controller.share.list)
+  //查看分享
+  router.get('/share/:sharedurl', controller.share.read)
 }
