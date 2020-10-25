@@ -2,10 +2,11 @@ export default {
 	// 全局配置
 	common: {
 		// #ifndef H5
-		baseUrl: "http://127.0.0.1:7001",
+		// baseUrl: "http://127.0.0.1:7001/api",
+		baseUrl: "http://suyuxi.utools.club/api",
 		// #endif
 		// #ifdef H5
-		baseUrl: "/api",
+		// baseUrl: "/api",
 		// #endif
 		header: {
 			'Content-Type': 'application/json;charset=UTF-8',

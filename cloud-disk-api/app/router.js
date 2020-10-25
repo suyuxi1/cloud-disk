@@ -4,36 +4,37 @@
  * @param {Egg.Application} app - egg application
  */
 module.exports = (app) => {
+  const pre = 'api'
   const { router, controller } = app
-  router.get('/', controller.home.index)
-  router.get('/list', controller.home.list)
+  router.get(pre + '/', controller.home.index)
+  router.get(pre + '/list', controller.home.list)
   // 用户注册
-  router.post('/reg', controller.user.reg)
+  router.post(pre + '/reg', controller.user.reg)
   // 用户登录
-  router.post('/login', controller.user.login)
+  router.post(pre + '/login', controller.user.login)
   // 退出登录
-  router.post('/logout', controller.user.logout)
+  router.post(pre + '/logout', controller.user.logout)
   //上传
-  router.post('/upload', controller.file.upload)
+  router.post(pre + '/upload', controller.file.upload)
   //剩余容量
-  router.get('/getsize', controller.user.getSize)
+  router.get(pre + '/getsize', controller.user.getSize)
   //文件列表
-  router.get('/file', controller.file.list)
+  router.get(pre + '/file', controller.file.list)
   //创建文件
-  router.post('/file/createdir', controller.file.createdir)
+  router.post(pre + '/file/createdir', controller.file.createdir)
   //重命名
-  router.post('/file/rename', controller.file.rename)
+  router.post(pre + '/file/rename', controller.file.rename)
   //批量删除
-  router.post('/file/delete', controller.file.delete)
+  router.post(pre + '/file/delete', controller.file.delete)
   //搜索文件
-  router.get('/file/search', controller.file.search)
+  router.get(pre + '/file/search', controller.file.search)
 
   //创建分享
-  router.post('/share/create', controller.share.create)
+  router.post(pre + '/share/create', controller.share.create)
   //我的分享列表
-  router.get('/share/list', controller.share.list)
+  router.get(pre + '/share/list', controller.share.list)
   //查看分享
-  router.get('/share/:sharedurl', controller.share.read)
+  router.get(pre + '/share/:sharedurl', controller.share.read)
   //保存到自己的网盘
-  router.post('/share/save_to_self', controller.share.saveToSelf)
+  router.post(pre + '/share/save_to_self', controller.share.saveToSelf)
 }

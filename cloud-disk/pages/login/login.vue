@@ -5,8 +5,8 @@
 
 		<view class="px-4">
 			<input type="text" v-model="form.username" class="uni-input bg-light rounded mb-4" placeholder="手机号/用户名/邮箱" />
-			<input type="text" v-model="form.password" class="uni-input bg-light rounded mb-4" placeholder="请输入密码" />
-			<input v-if="type === 'reg'" type="text" v-model="form.repassword" class="uni-input bg-light rounded mb-4" placeholder="请输入确认密码" />
+			<input type="password" v-model="form.password" class="uni-input bg-light rounded mb-4" placeholder="请输入密码" />
+			<input v-if="type === 'reg'" type="password" v-model="form.repassword" class="uni-input bg-light rounded mb-4" placeholder="请输入确认密码" />
 
 			<view class="bg-main text-white flex align-center justify-center font-md py-2 rounded-circle" hover-class="bg-main-hover" @click="handleClick">
 				{{ type === 'login' ? '登 录' : '注 册' }}
@@ -36,11 +36,27 @@ export default {
 			this.type = this.type === 'login' ? 'reg' : 'login';
 		},
 		handleClick() {
-			if (this.type === 'login') {
-				uni.switchTab({
-					url: '../index/index'
+			let msg = this.type === 'login' ? '登录' : '注册';
+			this.$H.post('/' + this.type, this.form).then(res => {
+				uni.showToast({
+					title: msg + '成功',
+					icon: 'none'
 				});
-			}
+				if (this.type === 'login') {
+					this.$store.dispatch('login', res).then(result => {
+						uni.switchTab({
+							url: '../index/index'
+						});
+					});
+				} else {
+					this.form = {
+						username: '',
+						password: '',
+						repassword: ''
+					};
+					this.changeType();
+				}
+			});
 		}
 	}
 };
