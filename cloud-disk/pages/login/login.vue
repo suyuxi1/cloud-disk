@@ -25,8 +25,8 @@ export default {
 		return {
 			type: 'login',
 			form: {
-				username: '',
-				password: '',
+				username: 'su',
+				password: '123456',
 				repassword: ''
 			}
 		};

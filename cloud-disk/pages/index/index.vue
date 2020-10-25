@@ -128,56 +128,7 @@ export default {
 		return {
 			renameValue: '',
 			newdirname: '',
-			list: [
-				{
-					type: 'dir',
-					name: '我的笔记',
-					create_time: '2020-10-21 08:00',
-					checked: false
-				},
-				{
-					type: 'image',
-					name: '图片.jpg',
-					data: 'https://yuxis.oss-cn-beijing.aliyuncs.com/img/c10dtax56680000.png',
-					create_time: '2020-10-21 08:00',
-					checked: false
-				},
-				{
-					type: 'video',
-					name: 'uniapp实战教程.mp4',
-					data: 'https://yuxis.oss-cn-beijing.aliyuncs.com/document/6f504rh95so0000.mp4',
-					create_time: '2020-10-21 08:00',
-					checked: false
-				},
-				{
-					type: 'text',
-					name: '记事本.txt',
-					create_time: '2020-10-21 08:00',
-					checked: false
-				},
-				{
-					type: 'none',
-					name: '压缩包.rar',
-					create_time: '2020-10-21 08:00',
-					checked: false
-				},
-				{
-					type: 'image',
-					name: '图片1.jpg',
-					data: 'https://images.pexels.com/photos/5327007/pexels-photo-5327007.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-					create_time: '2020-10-21 08:00',
-					checked: false,
-					download: 100
-				},
-				{
-					type: 'image',
-					name: '图片2.jpg',
-					data: 'https://images.pexels.com/photos/5327931/pexels-photo-5327931.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-					create_time: '2020-10-21 08:00',
-					checked: false,
-					download: 80
-				}
-			],
+			list: [],
 			addList: [
 				{
 					icon: 'icon-file-b-6',
@@ -212,15 +163,41 @@ export default {
 		};
 	},
 	onLoad() {
-		uni.request({
-			url: 'http://127.0.0.1:7001/list',
-			method: 'GET',
-			success: res => {
-				console.log(res.data);
-			}
-		});
+		// uni.request({
+		// 	url: 'http://127.0.0.1:7001/list',
+		// 	method: 'GET',
+		// 	success: res => {
+		// 		console.log(res.data);
+		// 	}
+		// });
+		this.getData();
 	},
 	methods: {
+		formatList(list) {
+			return list.map(item => {
+				let type = 'none';
+				if (item.isdir === 1) {
+					type = 'dir';
+				} else {
+					type = item.ext.split('/')[0] || 'none';
+				}
+				return {
+					type,
+					checked: false,
+					...item
+				};
+			});
+		},
+		getData() {
+			this.$H
+				.get('/file?file_id=0', {
+					token: true
+				})
+				.then(res => {
+					console.log(res);
+					this.list = this.formatList(res.rows);
+				});
+		},
 		select(e) {
 			this.list[e.index].checked = e.value;
 		},
@@ -304,6 +281,8 @@ export default {
 
 		// 列表点击事件处理
 		doEvent(item) {
+			console.log(item);
+			//对文件类型进行各种情况处理
 			switch (item.type) {
 				//预览图片
 				case 'image':
@@ -311,22 +290,21 @@ export default {
 						return item.type === 'image';
 					});
 					uni.previewImage({
-						current: item.data,
-						urls: images.map(item => item.data)
+						current: item.url,
+						urls: images.map(item => item.url)
 					});
 					break;
 				//视频播放
 				case 'video':
 					console.log('进入视频');
 					uni.navigateTo({
-						url: '../video/video?url=' + item.data + '&title=' + item.name
+						url: '../video/video?url=' + item.url + '&title=' + item.name
 					});
 					break;
 				default:
 					break;
 			}
 		},
-
 		//切换排序
 		changSort(index) {
 			this.sortIndex = index;
