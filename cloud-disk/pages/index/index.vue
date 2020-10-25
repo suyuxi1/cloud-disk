@@ -1,8 +1,14 @@
 <template>
 	<view>
+		<!-- 自定义导航栏 -->
 		<nav-bar>
 			<template v-if="checkCount === 0">
-				<text slot="left" class="font-md ml-3">首页</text>
+				<template slot="left">
+					<view style="width: 60rpx; height: 60rpx;" class="flex align-center justify-center bg-light rounded-circle ml-3" @tap="backUp" v-if="current">
+						<image src="../../static/arrow-left.png" style="width:40rpx;height: 40rpx;" mode=""></image>
+					</view>
+					<text class="font-md ml-3">{{ current ? current.name : '首页' }}</text>
+				</template>
 				<template slot="right">
 					<view style="width: 60rpx;height: 60rpx;" class="flex align-center justify-center bg-icon rounded-circle mr-3" @tap="openAddDialog">
 						<text class="iconfont icon-zengjia"></text>
@@ -151,13 +157,16 @@ export default {
 					name: '新建文件夹'
 				}
 			],
+			dirs: [], //这里的dirs是记录路由的，sortOptions数组记录排序方式，其中的key可以作为查询参数传到后台，
 			sortIndex: 0,
 			sortOptions: [
 				{
-					name: '按名称排列'
+					name: '按名称排列',
+					key: 'name'
 				},
 				{
-					name: '按时间排序'
+					name: '按时间排序',
+					key: 'created_time'
 				}
 			]
 		};
@@ -170,9 +179,16 @@ export default {
 		// 		console.log(res.data);
 		// 	}
 		// });
+
+		//页面加载的时候，从本地存储读取dirs，如果不清空，会从上次离开的地方继续
+		let dirs = uni.getStorageSync('dirs');
+		if (dirs) {
+			this.dirs = JSON.parse(dirs);
+		}
 		this.getData();
 	},
 	methods: {
+		//将数据格式化为我们需要显示的样子，不同的文件类型，是否选中
 		formatList(list) {
 			return list.map(item => {
 				let type = 'none';
@@ -189,8 +205,12 @@ export default {
 			});
 		},
 		getData() {
+			//每次请求API接口的时候，把最新的file_id和选取的orderby排序方式带上
+			console.log(this.file_id + '>>>>>>>>>>>>>>>>>');
+			let orderby = this.sortOptions[this.sortIndex].key;
+			console.log(orderby + ',<<<<<<<<<<<<<<<<<<');
 			this.$H
-				.get('/file?file_id=0', {
+				.get(`/file?file_id=${this.file_id}&orderby=${orderby}`, {
 					token: true
 				})
 				.then(res => {
@@ -302,20 +322,60 @@ export default {
 					});
 					break;
 				default:
+					//把当前元素push到路由数组中去，然后用这个目录的id，去请求它的层级里的数据，同时存到本地存储中
+					this.dirs.push({
+						id: item.id,
+						name: item.name
+					});
+					this.getData();
+					uni.setStorage({
+						key: 'dirs',
+						data: JSON.stringify(this.dirs)
+					});
 					break;
 			}
 		},
 		//切换排序
 		changSort(index) {
+			// this.sortIndex = index;
+			// this.$refs.sort.close();
 			this.sortIndex = index;
+			this.getData();
 			this.$refs.sort.close();
 		},
 		openSortDialog() {
 			this.$refs.sort.open();
+		},
+		// 返回上一个目录
+		//顶部导航栏在子目录的时候，会有返回箭头，它的事件如下，路由出栈，再获取回到上一层的最新数据，存储
+		backUp() {
+			this.dirs.pop();
+			this.getData();
+			uni.setStorage({
+				key: 'dirs',
+				data: JSON.stringify(this.dirs)
+			});
 		}
 	},
 
 	computed: {
+		//两个计算属性，实时根据当前dirs数组的变化，
+		//file_id计算属性取得应该传到后端的file_id参数（就是当前目录），
+		//current计算属性则用来切换导航栏样式
+		file_id() {
+			let l = this.dirs.length;
+			if (l == 0) {
+				return 0;
+			}
+			return this.dirs[l - 1].id;
+		},
+		current() {
+			let l = this.dirs.length;
+			if (l === 0) {
+				return false;
+			}
+			return this.dirs[l - 1];
+		},
 		//选中列表
 		checkList() {
 			return this.list.filter(item => item.checked);

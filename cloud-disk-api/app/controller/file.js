@@ -110,7 +110,7 @@ class FileController extends Controller {
         type: 'string',
         defValue: 'name',
         range: {
-          in: ['name', 'create_time'],
+          in: ['name', 'created_time'],
         },
         desc: '排序',
       },
