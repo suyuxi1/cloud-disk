@@ -736,6 +736,11 @@ var render = function() {
                   value: "",
                   placeholder: "搜素网盘文件",
                   _i: 20
+                },
+                on: {
+                  input: function($event) {
+                    return _vm.$handleViewEvent($event)
+                  }
                 }
               })
             ],

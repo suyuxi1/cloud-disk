@@ -31,7 +31,7 @@
 				<view class="flex align-center justify-center text-light-muted" style="height: 70rpx; width: 70rpx; position: absolute; top: 0; left: 0;">
 					<text class="iconfont icon-sousuo"></text>
 				</view>
-				<input type="text" style="height: 70rpx; padding-left: 70rpx;" value="" class="bg-light font rounded-circle" placeholder="搜素网盘文件" />
+				<input type="text" style="height: 70rpx; padding-left: 70rpx;" value="" class="bg-light font rounded-circle" placeholder="搜素网盘文件" @input="search" />
 			</view>
 		</view>
 
@@ -188,6 +188,17 @@ export default {
 		this.getData();
 	},
 	methods: {
+		//搜索功能，关键字为空就请求所有数据的接口，否则就将文本框实时输入的内容进行搜索
+		search(e){
+			if(e.detail.value == ''){
+				return this.getData()
+			}
+			this.$H.get('/file/search?keyword=' + e.detail.value, {
+				token: true
+			}).then(res => {
+				this.list = this.formatList(res.rows);
+			});
+		},
 		//将数据格式化为我们需要显示的样子，不同的文件类型，是否选中
 		formatList(list) {
 			return list.map(item => {
