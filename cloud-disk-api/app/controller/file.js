@@ -235,7 +235,7 @@ class FileController extends Controller {
     if (res) {
       //减去内存
       size = ctx.authUser.user_size - size
-      ctx.authUser.user_size = size > 0 ? size : 0
+      ctx.authUser.used_size = size > 0 ? size : 0
       ctx.authUser.save()
     }
     ctx.apiSuccess(res)
