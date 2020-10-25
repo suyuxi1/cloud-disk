@@ -808,7 +808,7 @@ var render = function() {
             1
           )
         : _vm._e(),
-      _c("f-dialog", { ref: "dialog", attrs: { _i: 27 } }, [
+      _c("f-dialog", { ref: "delete", attrs: { _i: 27 } }, [
         _vm._v("是否删除选中的文件？")
       ]),
       _c(
