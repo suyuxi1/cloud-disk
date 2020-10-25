@@ -3,7 +3,7 @@ export default {
 	common: {
 		// #ifndef H5
 		// baseUrl: "http://127.0.0.1:7001/api",
-		baseUrl: "http://suyuxi.utools.club/api",
+		baseUrl: "http://suyuxi.utools.club",
 		// #endif
 		// #ifdef H5
 		// baseUrl: "/api",
