@@ -12,6 +12,39 @@ export default new Vuex.Store({
 		token: null
 	},
 	actions: {
+		//首先读取到剪切板的内容
+		//从之前的剪贴板中解析出key的值，就是share表中的sharedUrl，真正的链接地址和它有关
+		getShareUrl({
+			state
+		}) {
+			//#ifdef H5
+			uni.getClipboardData({
+				success: (res) => {
+					//通过前面结果可以看到剪贴的链接是以http://127.0.0.1:7001/开头的，接口上线了这个地址要改
+					if (res.data.includes('http://127.0.0.1:7001/')) {
+						//需要从完整的链接截取出key的值，数据库应该知道真正的链接就是和这个有关的
+						let key = res.data.substring(res.data.lastIndexOf('\/') + 1, res.data.length)
+						if (!key) {
+							return
+						}
+						uni.showModal({
+							content: '检测到有分享内容，是否打开？',
+							success: (res) => {
+								if (res.confirm) {
+									uni.navigateTo({
+										url: "/pages/shareurl/shareurl?key=" + key
+									})
+									//清空剪切板
+									uni.setClipboardData({
+										data: ''
+									});
+								}
+							}
+						});
+					}
+				}
+			});
+		},
 		// //清除传输记录
 		clearList({
 			state
