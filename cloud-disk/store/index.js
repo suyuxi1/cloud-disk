@@ -12,6 +12,18 @@ export default new Vuex.Store({
 		token: null
 	},
 	actions: {
+		// //清除传输记录
+		clearList({
+			state
+		}) {
+			if (state.user) {
+				state.downlist = []
+				state.uploadList = []
+				uni.removeStorageSync("downlist_" + state.user.id)
+				uni.removeStorageSync("uploadList_" + state.user.id)
+			}
+		},
+
 		// 创建一个下载任务
 		createDownloadJob({
 			state

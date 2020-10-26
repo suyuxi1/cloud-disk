@@ -19,7 +19,17 @@
 				<scroll-view scroll-y="true" class="flex-1">
 					<!-- 下载列表 -->
 					<template v-if="index === 0">
-						<view></view>
+						<view style="height: 60rpx;" class="bg-light flex align-center font-sm px-2 text-muted">文件下载至：_doc/uniapp_temp_1603680037252/download</view>
+						<view class="p-2 border-bottom border-light-secondary font text-muted">下载中({{ downing.length }})</view>
+						<f-list v-for="(item, index) in downing" :key="'i' + index" :item="item" :index="index">
+							<view class="flex align-center text-main" style="height: 70rpx;">
+								<text class="iconfont icon-zanting"></text>
+								<text class="ml-1">{{ item.progress }}%</text>
+							</view>
+							<progress slot="bottom" :percent="item.progress" activeColor="#009CFF" :stroke-width="4" />
+						</f-list>
+						<view class="p-2 border-bottom border-light-secondary font text-muted">下载完成({{ downed.length }})</view>
+						<f-list v-for="(item, index) in downed" :key="'d' + index" :item="item" :index="index" :showRight="false"></f-list>
 					</template>
 					<!-- 上传列表 -->
 					<template v-else>
@@ -97,6 +107,7 @@ export default {
 		};
 	},
 	computed: {
+		//上传列表
 		...mapState({
 			uploadList: state => state.uploadList
 		}),
@@ -110,20 +121,38 @@ export default {
 				return item.progress === 100;
 			});
 		},
+		//下载列表
+		...mapState({
+			downlist: state => state.downlist
+		}),
 		downing() {
-			return this.list.filter(item => {
-				return item.download < 100;
+			return this.downlist.filter(item => {
+				return item.progress < 100;
 			});
 		},
 		downed() {
-			return this.list.filter(item => {
-				return item.download === 100;
+			return this.downlist.filter(item => {
+				return item.progress === 100;
 			});
 		}
 	},
 	methods: {
 		changeTab(index) {
 			this.tabIndex = index;
+		},
+		onNavigationBarButtonTap() {
+			uni.showModal({
+				content: '是否要清除传输记录？',
+				success: res => {
+					if (res.confirm) {
+						this.$store.dispatch('clearList');
+						uni.showToast({
+							title: '清除成功',
+							icon: 'none'
+						});
+					}
+				}
+			});
 		}
 	}
 };
