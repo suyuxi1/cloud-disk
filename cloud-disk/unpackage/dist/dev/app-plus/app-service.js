@@ -3748,136 +3748,144 @@ var render = function() {
                   attrs: { _i: "7-" + $31 }
                 },
                 [
-                  _c("view", {
-                    staticClass: _vm._$s(
-                      "8-" + $31,
-                      "sc",
-                      "bg-light flex align-center font-sm px-2 text-muted"
-                    ),
-                    attrs: { _i: "8-" + $31 }
-                  }),
-                  _c(
-                    "view",
-                    {
-                      staticClass: _vm._$s(
-                        "9-" + $31,
-                        "sc",
-                        "p-2 border-bottom  border-light-secondary font text-muted"
-                      ),
-                      attrs: { _i: "9-" + $31 }
-                    },
-                    [
-                      _vm._v(
-                        _vm._$s("9-" + $31, "t0-0", _vm._s(_vm.downing.length))
-                      )
-                    ]
-                  ),
-                  _vm._l(
-                    _vm._$s(10 + "-" + $31, "f", { forItems: _vm.downing }),
-                    function(item, index, $22, $32) {
-                      return _c(
-                        "f-list",
-                        {
-                          key: _vm._$s(10 + "-" + $31, "f", {
-                            forIndex: $22,
-                            key: "i" + index
-                          }),
-                          attrs: {
-                            item: item,
-                            index: index,
-                            _i: "10-" + $31 + "-" + $32
-                          }
-                        },
-                        [
-                          _c(
-                            "view",
-                            {
-                              staticClass: _vm._$s(
-                                "11-" + $31 + "-" + $32,
-                                "sc",
-                                "flex align-center text-main"
-                              ),
-                              attrs: { _i: "11-" + $31 + "-" + $32 }
-                            },
-                            [
-                              _c("text", {
-                                staticClass: _vm._$s(
-                                  "12-" + $31 + "-" + $32,
-                                  "sc",
-                                  "iconfont icon-zanting"
-                                ),
-                                attrs: { _i: "12-" + $31 + "-" + $32 }
-                              }),
-                              _c(
-                                "text",
-                                {
-                                  staticClass: _vm._$s(
-                                    "13-" + $31 + "-" + $32,
-                                    "sc",
-                                    "ml-1"
-                                  ),
-                                  attrs: { _i: "13-" + $31 + "-" + $32 }
-                                },
-                                [
-                                  _vm._v(
-                                    _vm._$s(
-                                      "13-" + $31 + "-" + $32,
-                                      "t0-0",
-                                      _vm._s(item.download)
-                                    )
-                                  )
-                                ]
+                  _vm._$s("8-" + $31, "i", index === 0)
+                    ? [_c("view")]
+                    : [
+                        _c(
+                          "view",
+                          {
+                            staticClass: _vm._$s(
+                              "11-" + $31,
+                              "sc",
+                              "p-2 border-bottom border-light-secondary font text-muted"
+                            ),
+                            attrs: { _i: "11-" + $31 }
+                          },
+                          [
+                            _vm._v(
+                              _vm._$s(
+                                "11-" + $31,
+                                "t0-0",
+                                _vm._s(_vm.uploading.length)
                               )
-                            ]
-                          ),
-                          _c("progress", {
-                            attrs: {
-                              percent: _vm._$s(
-                                "14-" + $31 + "-" + $32,
-                                "a-percent",
-                                item.download
-                              ),
-                              _i: "14-" + $31 + "-" + $32
-                            },
-                            slot: "bottom"
-                          })
-                        ]
-                      )
-                    }
-                  ),
-                  _c(
-                    "view",
-                    {
-                      staticClass: _vm._$s(
-                        "15-" + $31,
-                        "sc",
-                        "p-2 border-bottom border-light-secondary font text-muted"
-                      ),
-                      attrs: { _i: "15-" + $31 }
-                    },
-                    [
-                      _vm._v(
-                        _vm._$s("15-" + $31, "t0-0", _vm._s(_vm.downed.length))
-                      )
-                    ]
-                  ),
-                  _vm._l(
-                    _vm._$s(16 + "-" + $31, "f", { forItems: _vm.downed }),
-                    function(item, index, $23, $33) {
-                      return _c("f-list", {
-                        key: _vm._$s(16 + "-" + $31, "f", {
-                          forIndex: $23,
-                          key: "d" + index
-                        }),
-                        attrs: {
-                          item: item,
-                          index: index,
-                          showRight: false,
-                          _i: "16-" + $31 + "-" + $33
-                        }
-                      })
-                    }
-                  )
+                            )
+                          ]
+                        ),
+                        _vm._l(
+                          _vm._$s(12 + "-" + $31, "f", {
+                            forItems: _vm.uploading
+                          }),
+                          function(item, index, $22, $32) {
+                            return _c(
+                              "f-list",
+                              {
+                                key: _vm._$s(12 + "-" + $31, "f", {
+                                  forIndex: $22,
+                                  key: "i" + index
+                                }),
+                                attrs: {
+                                  item: item,
+                                  index: index,
+                                  _i: "12-" + $31 + "-" + $32
+                                }
+                              },
+                              [
+                                _c(
+                                  "view",
+                                  {
+                                    staticClass: _vm._$s(
+                                      "13-" + $31 + "-" + $32,
+                                      "sc",
+                                      "flex align-center text-main"
+                                    ),
+                                    attrs: { _i: "13-" + $31 + "-" + $32 }
+                                  },
+                                  [
+                                    _c("text", {
+                                      staticClass: _vm._$s(
+                                        "14-" + $31 + "-" + $32,
+                                        "sc",
+                                        "iconfont icon-zanting"
+                                      ),
+                                      attrs: { _i: "14-" + $31 + "-" + $32 }
+                                    }),
+                                    _c(
+                                      "text",
+                                      {
+                                        staticClass: _vm._$s(
+                                          "15-" + $31 + "-" + $32,
+                                          "sc",
+                                          "ml-1"
+                                        ),
+                                        attrs: { _i: "15-" + $31 + "-" + $32 }
+                                      },
+                                      [
+                                        _vm._v(
+                                          _vm._$s(
+                                            "15-" + $31 + "-" + $32,
+                                            "t0-0",
+                                            _vm._s(item.progress)
+                                          )
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _c("progress", {
+                                  attrs: {
+                                    percent: _vm._$s(
+                                      "16-" + $31 + "-" + $32,
+                                      "a-percent",
+                                      item.progress
+                                    ),
+                                    _i: "16-" + $31 + "-" + $32
+                                  },
+                                  slot: "bottom"
+                                })
+                              ]
+                            )
+                          }
+                        ),
+                        _c(
+                          "view",
+                          {
+                            staticClass: _vm._$s(
+                              "17-" + $31,
+                              "sc",
+                              "p-2 border-bottom border-light-secondary font text-muted"
+                            ),
+                            attrs: { _i: "17-" + $31 }
+                          },
+                          [
+                            _vm._v(
+                              _vm._$s(
+                                "17-" + $31,
+                                "t0-0",
+                                _vm._s(_vm.uploaded.length)
+                              )
+                            )
+                          ]
+                        ),
+                        _vm._l(
+                          _vm._$s(18 + "-" + $31, "f", {
+                            forItems: _vm.uploaded
+                          }),
+                          function(item, index, $23, $33) {
+                            return _c("f-list", {
+                              key: _vm._$s(18 + "-" + $31, "f", {
+                                forIndex: $23,
+                                key: "d" + index
+                              }),
+                              attrs: {
+                                item: item,
+                                index: index,
+                                showRight: false,
+                                _i: "18-" + $31 + "-" + $33
+                              }
+                            })
+                          }
+                        )
+                      ]
                 ],
                 2
               )
@@ -3915,7 +3923,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _stu
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("Object.defineProperty(exports, \"__esModule\", { value: true });exports.default = void 0;\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nvar _fList = _interopRequireDefault(__webpack_require__(/*! ../../components/common/f-list.vue */ 41));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\nvar _default = { components: { fList: _fList.default }, data: function data() {return { tabIndex: 0, tabBars: [{ name: '下载列表' }, { name: '上传列表' }], list: [{ type: 'image', name: '图片1.jpg', data: 'https://images.pexels.com/photos/5327007/pexels-photo-5327007.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', create_time: '2020-10-21 08:00', checked: false, download: 100 }, { type: 'image', name: '图片2.jpg', data: 'https://images.pexels.com/photos/5327931/pexels-photo-5327931.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', create_time: '2020-10-21 08:00', checked: false, download: 80 }, { type: 'image', name: '图片3.jpg', data: 'https://images.pexels.com/photos/5327007/pexels-photo-5327007.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', create_time: '2020-10-21 08:00', checked: false,\n        download: 100 },\n\n      {\n        type: 'image',\n        name: '图片4.jpg',\n        data: 'https://images.pexels.com/photos/5327931/pexels-photo-5327931.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',\n        create_time: '2020-10-21 08:00',\n        checked: false,\n        download: 70 }] };\n\n\n\n  },\n  computed: {\n    downing: function downing() {\n      return this.list.filter(function (item) {\n        return item.download < 100;\n      });\n    },\n    downed: function downed() {\n      return this.list.filter(function (item) {\n        return item.download === 100;\n      });\n    } },\n\n  methods: {\n    changeTab: function changeTab(index) {\n      this.tabIndex = index;\n    } } };exports.default = _default;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVuaS1hcHA6Ly8vcGFnZXMvbGlzdC9saXN0LnZ1ZSJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUF1Q0EsdUc7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O2VBQ0EsRUFDQSxjQUNBLHFCQURBLEVBREEsRUFJQSxJQUpBLGtCQUlBLENBQ0EsU0FDQSxXQURBLEVBRUEsVUFDQSxFQUNBLFlBREEsRUFEQSxFQUlBLEVBQ0EsWUFEQSxFQUpBLENBRkEsRUFVQSxPQUNBLEVBQ0EsYUFEQSxFQUVBLGVBRkEsRUFHQSxnSEFIQSxFQUlBLCtCQUpBLEVBS0EsY0FMQSxFQU1BLGFBTkEsRUFEQSxFQVNBLEVBQ0EsYUFEQSxFQUVBLGVBRkEsRUFHQSxnSEFIQSxFQUlBLCtCQUpBLEVBS0EsY0FMQSxFQU1BLFlBTkEsRUFUQSxFQWlCQSxFQUNBLGFBREEsRUFFQSxlQUZBLEVBR0EsZ0hBSEEsRUFJQSwrQkFKQSxFQUtBLGNBTEE7QUFNQSxxQkFOQSxFQWpCQTs7QUF5QkE7QUFDQSxxQkFEQTtBQUVBLHVCQUZBO0FBR0Esd0hBSEE7QUFJQSx1Q0FKQTtBQUtBLHNCQUxBO0FBTUEsb0JBTkEsRUF6QkEsQ0FWQTs7OztBQTZDQSxHQWxEQTtBQW1EQTtBQUNBLFdBREEscUJBQ0E7QUFDQTtBQUNBO0FBQ0EsT0FGQTtBQUdBLEtBTEE7QUFNQSxVQU5BLG9CQU1BO0FBQ0E7QUFDQTtBQUNBLE9BRkE7QUFHQSxLQVZBLEVBbkRBOztBQStEQTtBQUNBLGFBREEscUJBQ0EsS0FEQSxFQUNBO0FBQ0E7QUFDQSxLQUhBLEVBL0RBLEUiLCJmaWxlIjoiNzkuanMiLCJzb3VyY2VzQ29udGVudCI6WyI8dGVtcGxhdGU+XHJcblx0PHZpZXcgc3R5bGU9XCJoZWlnaHQ6IDEwMHZoO1wiIGNsYXNzPVwiZmxleCBmbGV4LWNvbHVtblwiPlxyXG5cdFx0PHZpZXcgY2xhc3M9XCJmbGV4IGJvcmRlci1ib3R0b20gYm9yZGVyLWxpZ2h0LXNlY29uZGFyeVwiIHN0eWxlPVwiaGVpZ2h0OiAxMDBycHg7XCI+XHJcblx0XHRcdDx2aWV3XHJcblx0XHRcdFx0Y2xhc3M9XCJmbGV4LTEgZmxleCBmbGV4LWNvbHVtbiBhbGlnbi1jZW50ZXIganVzdGlmeS1jZW50ZXJcIlxyXG5cdFx0XHRcdHYtZm9yPVwiKGl0ZW0sIGluZGV4KSBpbiB0YWJCYXJzXCJcclxuXHRcdFx0XHQ6a2V5PVwiaW5kZXhcIlxyXG5cdFx0XHRcdDpjbGFzcz1cImluZGV4ID09PSB0YWJJbmRleCA/ICd0ZXh0LW1haW4nIDogJydcIlxyXG5cdFx0XHRcdEBjbGljaz1cImNoYW5nZVRhYihpbmRleClcIlxyXG5cdFx0XHQ+XHJcblx0XHRcdFx0PHRleHQgY2xhc3M9XCJmb250LW1kXCI+e3sgaXRlbS5uYW1lIH19PC90ZXh0PlxyXG5cdFx0XHRcdDx0ZXh0IGNsYXNzPVwicm91bmRlZFwiIDpjbGFzcz1cInRhYkluZGV4ID09PSBpbmRleCA/ICdiZy1tYWluJyA6ICdiZy13aGl0ZSdcIiBzdHlsZT1cIiBoZWlnaHQ6IDhycHg7IHdpZHRoOiAxNDBycHhcIj48L3RleHQ+XHJcblx0XHRcdDwvdmlldz5cclxuXHRcdDwvdmlldz5cclxuXHJcblx0XHQ8IS0tIHN3aXBlcuWGheWuuemaj+edgOS4iumdoueahHRhYueahOWIh+aNouiBlOWKqCAtLT5cclxuXHRcdDxzd2lwZXIgOmR1cmF0aW9uPVwiMjUwXCIgY2xhc3M9XCJmbGV4LTEgZmxleFwiIDpjdXJyZW50PVwidGFiSW5kZXhcIiBAY2hhbmdlPVwiY2hhbmdlVGFiKCRldmVudC5kZXRhaWwuY3VycmVudClcIj5cclxuXHRcdFx0PHN3aXBlci1pdGVtIGNsYXNzPVwiZmxleC0xIGZsZXhcIiB2LWZvcj1cIihpdGVtLCBpbmRleCkgaW4gdGFiQmFyc1wiIDprZXk9XCJpbmRleFwiPlxyXG5cdFx0XHRcdDxzY3JvbGwtdmlldyBzY3JvbGwteT1cInRydWVcIiBjbGFzcz1cImZsZXgtMVwiPlxyXG5cdFx0XHRcdFx0PHZpZXcgc3R5bGU9XCJoZWlnaHQ6IDYwcnB4O1wiIGNsYXNzPVwiYmctbGlnaHQgZmxleCBhbGlnbi1jZW50ZXIgZm9udC1zbSBweC0yIHRleHQtbXV0ZWRcIj7mlofku7bkuIvovb3oh7PvvJpzdHJvbmdlL3h4eHgveHh4eDwvdmlldz5cclxuXHRcdFx0XHRcdDx2aWV3IGNsYXNzPVwicC0yIGJvcmRlci1ib3R0b20gIGJvcmRlci1saWdodC1zZWNvbmRhcnkgZm9udCB0ZXh0LW11dGVkXCI+5LiL6L295Lite3sgZG93bmluZy5sZW5ndGggfX08L3ZpZXc+XHJcblx0XHRcdFx0XHQ8IS0tIOi/memHjOimgeazqOaEj++8jOWboOS4uuS4i+mdouWQjOe6p+i/mOacieS4qmYtbGlzdOS4ree7keWummtleeS4umluZGV477yM5Lya5Yay56qB77yM5omA5Lul5YiG5Yir57uZ5a6D5Lus5Yqg5LiK5LiN5ZCM55qE5YmN57yA5Yy65YiG77yM5ZCm5YiZ5Lya5oql6ZSZIC0tPlxyXG5cdFx0XHRcdFx0PGYtbGlzdCB2LWZvcj1cIihpdGVtLCBpbmRleCkgaW4gZG93bmluZ1wiIDprZXk9XCInaScgKyBpbmRleFwiIDppdGVtPVwiaXRlbVwiIDppbmRleD1cImluZGV4XCI+XHJcblx0XHRcdFx0XHRcdDx2aWV3IGNsYXNzPVwiZmxleCBhbGlnbi1jZW50ZXIgdGV4dC1tYWluXCIgc3R5bGU9XCJoZWlnaHQ6IDcwcnB4O1wiPlxyXG5cdFx0XHRcdFx0XHRcdDx0ZXh0IGNsYXNzPVwiaWNvbmZvbnQgaWNvbi16YW50aW5nXCI+PC90ZXh0PlxyXG5cdFx0XHRcdFx0XHRcdDx0ZXh0IGNsYXNzPVwibWwtMVwiPnt7IGl0ZW0uZG93bmxvYWQgfX08L3RleHQ+XHJcblx0XHRcdFx0XHRcdDwvdmlldz5cclxuXHRcdFx0XHRcdFx0PCEtLSDov5vluqbmnaHnu4Tku7bvvIx1bmlhcHDoh6rluKbnmoTml6DpobvlvJXlhaXvvIxwZXJjZW505bGe5oCn57uR5a6a5LiL6L2955qE55m+5YiG5q+U5pWw5YC8IC0tPlxyXG5cdFx0XHRcdFx0XHQ8cHJvZ3Jlc3Mgc2xvdD1cImJvdHRvbVwiIDpwZXJjZW50PVwiaXRlbS5kb3dubG9hZFwiIGFjdGl2ZUNvbG9yPVwiIzAwOUNGRlwiIDpzdHJva2Utd2lkdGg9XCI0XCIgLz5cclxuXHRcdFx0XHRcdDwvZi1saXN0PlxyXG5cdFx0XHRcdFx0PHZpZXcgY2xhc3M9XCJwLTIgYm9yZGVyLWJvdHRvbSBib3JkZXItbGlnaHQtc2Vjb25kYXJ5IGZvbnQgdGV4dC1tdXRlZFwiPuS4i+i9veWujOaIkHt7IGRvd25lZC5sZW5ndGggfX08L3ZpZXc+XHJcblx0XHRcdFx0XHQ8Zi1saXN0IHYtZm9yPVwiKGl0ZW0sIGluZGV4KSBpbiBkb3duZWRcIiA6a2V5PVwiJ2QnICsgaW5kZXhcIiA6aXRlbT1cIml0ZW1cIiA6aW5kZXg9XCJpbmRleFwiIDpzaG93UmlnaHQ9XCJmYWxzZVwiPjwvZi1saXN0PlxyXG5cdFx0XHRcdDwvc2Nyb2xsLXZpZXc+XHJcblx0XHRcdDwvc3dpcGVyLWl0ZW0+XHJcblx0XHQ8L3N3aXBlcj5cclxuXHQ8L3ZpZXc+XHJcbjwvdGVtcGxhdGU+XHJcblxyXG48c2NyaXB0PlxyXG5pbXBvcnQgZkxpc3QgZnJvbSAnLi4vLi4vY29tcG9uZW50cy9jb21tb24vZi1saXN0LnZ1ZSc7XHJcbmV4cG9ydCBkZWZhdWx0IHtcclxuXHRjb21wb25lbnRzOiB7XHJcblx0XHRmTGlzdFxyXG5cdH0sXHJcblx0ZGF0YSgpIHtcclxuXHRcdHJldHVybiB7XHJcblx0XHRcdHRhYkluZGV4OiAwLFxyXG5cdFx0XHR0YWJCYXJzOiBbXHJcblx0XHRcdFx0e1xyXG5cdFx0XHRcdFx0bmFtZTogJ+S4i+i9veWIl+ihqCdcclxuXHRcdFx0XHR9LFxyXG5cdFx0XHRcdHtcclxuXHRcdFx0XHRcdG5hbWU6ICfkuIrkvKDliJfooagnXHJcblx0XHRcdFx0fVxyXG5cdFx0XHRdLFxyXG5cdFx0XHRsaXN0OiBbXHJcblx0XHRcdFx0e1xyXG5cdFx0XHRcdFx0dHlwZTogJ2ltYWdlJyxcclxuXHRcdFx0XHRcdG5hbWU6ICflm77niYcxLmpwZycsXHJcblx0XHRcdFx0XHRkYXRhOiAnaHR0cHM6Ly9pbWFnZXMucGV4ZWxzLmNvbS9waG90b3MvNTMyNzAwNy9wZXhlbHMtcGhvdG8tNTMyNzAwNy5qcGVnP2F1dG89Y29tcHJlc3MmY3M9dGlueXNyZ2ImZHByPTEmdz01MDAnLFxyXG5cdFx0XHRcdFx0Y3JlYXRlX3RpbWU6ICcyMDIwLTEwLTIxIDA4OjAwJyxcclxuXHRcdFx0XHRcdGNoZWNrZWQ6IGZhbHNlLFxyXG5cdFx0XHRcdFx0ZG93bmxvYWQ6IDEwMFxyXG5cdFx0XHRcdH0sXHJcblx0XHRcdFx0e1xyXG5cdFx0XHRcdFx0dHlwZTogJ2ltYWdlJyxcclxuXHRcdFx0XHRcdG5hbWU6ICflm77niYcyLmpwZycsXHJcblx0XHRcdFx0XHRkYXRhOiAnaHR0cHM6Ly9pbWFnZXMucGV4ZWxzLmNvbS9waG90b3MvNTMyNzkzMS9wZXhlbHMtcGhvdG8tNTMyNzkzMS5qcGVnP2F1dG89Y29tcHJlc3MmY3M9dGlueXNyZ2ImZHByPTEmdz01MDAnLFxyXG5cdFx0XHRcdFx0Y3JlYXRlX3RpbWU6ICcyMDIwLTEwLTIxIDA4OjAwJyxcclxuXHRcdFx0XHRcdGNoZWNrZWQ6IGZhbHNlLFxyXG5cdFx0XHRcdFx0ZG93bmxvYWQ6IDgwXHJcblx0XHRcdFx0fSxcclxuXHRcdFx0XHR7XHJcblx0XHRcdFx0XHR0eXBlOiAnaW1hZ2UnLFxyXG5cdFx0XHRcdFx0bmFtZTogJ+WbvueJhzMuanBnJyxcclxuXHRcdFx0XHRcdGRhdGE6ICdodHRwczovL2ltYWdlcy5wZXhlbHMuY29tL3Bob3Rvcy81MzI3MDA3L3BleGVscy1waG90by01MzI3MDA3LmpwZWc/YXV0bz1jb21wcmVzcyZjcz10aW55c3JnYiZkcHI9MSZ3PTUwMCcsXHJcblx0XHRcdFx0XHRjcmVhdGVfdGltZTogJzIwMjAtMTAtMjEgMDg6MDAnLFxyXG5cdFx0XHRcdFx0Y2hlY2tlZDogZmFsc2UsXHJcblx0XHRcdFx0XHRkb3dubG9hZDogMTAwXHJcblx0XHRcdFx0fSxcclxuXHRcdFx0XHR7XHJcblx0XHRcdFx0XHR0eXBlOiAnaW1hZ2UnLFxyXG5cdFx0XHRcdFx0bmFtZTogJ+WbvueJhzQuanBnJyxcclxuXHRcdFx0XHRcdGRhdGE6ICdodHRwczovL2ltYWdlcy5wZXhlbHMuY29tL3Bob3Rvcy81MzI3OTMxL3BleGVscy1waG90by01MzI3OTMxLmpwZWc/YXV0bz1jb21wcmVzcyZjcz10aW55c3JnYiZkcHI9MSZ3PTUwMCcsXHJcblx0XHRcdFx0XHRjcmVhdGVfdGltZTogJzIwMjAtMTAtMjEgMDg6MDAnLFxyXG5cdFx0XHRcdFx0Y2hlY2tlZDogZmFsc2UsXHJcblx0XHRcdFx0XHRkb3dubG9hZDogNzBcclxuXHRcdFx0XHR9XHJcblx0XHRcdF1cclxuXHRcdH07XHJcblx0fSxcclxuXHRjb21wdXRlZDoge1xyXG5cdFx0ZG93bmluZygpIHtcclxuXHRcdFx0cmV0dXJuIHRoaXMubGlzdC5maWx0ZXIoaXRlbSA9PiB7XHJcblx0XHRcdFx0cmV0dXJuIGl0ZW0uZG93bmxvYWQgPCAxMDA7XHJcblx0XHRcdH0pO1xyXG5cdFx0fSxcclxuXHRcdGRvd25lZCgpIHtcclxuXHRcdFx0cmV0dXJuIHRoaXMubGlzdC5maWx0ZXIoaXRlbSA9PiB7XHJcblx0XHRcdFx0cmV0dXJuIGl0ZW0uZG93bmxvYWQgPT09IDEwMDtcclxuXHRcdFx0fSk7XHJcblx0XHR9XHJcblx0fSxcclxuXHRtZXRob2RzOiB7XHJcblx0XHRjaGFuZ2VUYWIoaW5kZXgpIHtcclxuXHRcdFx0dGhpcy50YWJJbmRleCA9IGluZGV4O1xyXG5cdFx0fVxyXG5cdH1cclxufTtcclxuPC9zY3JpcHQ+XHJcblxyXG48c3R5bGU+PC9zdHlsZT5cbiJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///79\n");
+eval("Object.defineProperty(exports, \"__esModule\", { value: true });exports.default = void 0;\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nvar _fList = _interopRequireDefault(__webpack_require__(/*! ../../components/common/f-list.vue */ 41));\nvar _vuex = __webpack_require__(/*! vuex */ 73);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =\n{\n  components: {\n    fList: _fList.default },\n\n  data: function data() {\n    return {\n      tabIndex: 0,\n      tabBars: [\n      {\n        name: '下载列表' },\n\n      {\n        name: '上传列表' }]\n\n\n      // list: [\n      // \t{\n      // \t\ttype: 'image',\n      // \t\tname: '图片1.jpg',\n      // \t\tdata: 'https://images.pexels.com/photos/5327007/pexels-photo-5327007.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',\n      // \t\tcreate_time: '2020-10-21 08:00',\n      // \t\tchecked: false,\n      // \t\tdownload: 100\n      // \t},\n      // \t{\n      // \t\ttype: 'image',\n      // \t\tname: '图片2.jpg',\n      // \t\tdata: 'https://images.pexels.com/photos/5327931/pexels-photo-5327931.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',\n      // \t\tcreate_time: '2020-10-21 08:00',\n      // \t\tchecked: false,\n      // \t\tdownload: 80\n      // \t},\n      // \t{\n      // \t\ttype: 'image',\n      // \t\tname: '图片3.jpg',\n      // \t\tdata: 'https://images.pexels.com/photos/5327007/pexels-photo-5327007.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',\n      // \t\tcreate_time: '2020-10-21 08:00',\n      // \t\tchecked: false,\n      // \t\tdownload: 100\n      // \t},\n      // \t{\n      // \t\ttype: 'image',\n      // \t\tname: '图片4.jpg',\n      // \t\tdata: 'https://images.pexels.com/photos/5327931/pexels-photo-5327931.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',\n      // \t\tcreate_time: '2020-10-21 08:00',\n      // \t\tchecked: false,\n      // \t\tdownload: 70\n      // \t}\n      // ]\n    };\n  },\n  computed: _objectSpread(_objectSpread({},\n  (0, _vuex.mapState)({\n    uploadList: function uploadList(state) {return state.uploadList;} })), {}, {\n\n    uploading: function uploading() {\n      return this.uploadList.filter(function (item) {\n        return item.progress < 100;\n      });\n    },\n    uploaded: function uploaded() {\n      return this.uploadList.filter(function (item) {\n        return item.progress === 100;\n      });\n    },\n    downing: function downing() {\n      return this.list.filter(function (item) {\n        return item.download < 100;\n      });\n    },\n    downed: function downed() {\n      return this.list.filter(function (item) {\n        return item.download === 100;\n      });\n    } }),\n\n  methods: {\n    changeTab: function changeTab(index) {\n      this.tabIndex = index;\n    } } };exports.default = _default;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVuaS1hcHA6Ly8vcGFnZXMvbGlzdC9saXN0LnZ1ZSJdLCJuYW1lcyI6WyJjb21wb25lbnRzIiwiZkxpc3QiLCJkYXRhIiwidGFiSW5kZXgiLCJ0YWJCYXJzIiwibmFtZSIsImNvbXB1dGVkIiwidXBsb2FkTGlzdCIsInN0YXRlIiwidXBsb2FkaW5nIiwiZmlsdGVyIiwiaXRlbSIsInByb2dyZXNzIiwidXBsb2FkZWQiLCJkb3duaW5nIiwibGlzdCIsImRvd25sb2FkIiwiZG93bmVkIiwibWV0aG9kcyIsImNoYW5nZVRhYiIsImluZGV4Il0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQTRDQTtBQUNBLGdEO0FBQ2U7QUFDZEEsWUFBVSxFQUFFO0FBQ1hDLFNBQUssRUFBTEEsY0FEVyxFQURFOztBQUlkQyxNQUpjLGtCQUlQO0FBQ04sV0FBTztBQUNOQyxjQUFRLEVBQUUsQ0FESjtBQUVOQyxhQUFPLEVBQUU7QUFDUjtBQUNDQyxZQUFJLEVBQUUsTUFEUCxFQURROztBQUlSO0FBQ0NBLFlBQUksRUFBRSxNQURQLEVBSlE7OztBQVFUO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBM0NNLEtBQVA7QUE2Q0EsR0FsRGE7QUFtRGRDLFVBQVE7QUFDSixzQkFBUztBQUNYQyxjQUFVLEVBQUUsb0JBQUFDLEtBQUssVUFBSUEsS0FBSyxDQUFDRCxVQUFWLEVBRE4sRUFBVCxDQURJOztBQUlQRSxhQUpPLHVCQUlLO0FBQ1gsYUFBTyxLQUFLRixVQUFMLENBQWdCRyxNQUFoQixDQUF1QixVQUFBQyxJQUFJLEVBQUk7QUFDckMsZUFBT0EsSUFBSSxDQUFDQyxRQUFMLEdBQWdCLEdBQXZCO0FBQ0EsT0FGTSxDQUFQO0FBR0EsS0FSTTtBQVNQQyxZQVRPLHNCQVNJO0FBQ1YsYUFBTyxLQUFLTixVQUFMLENBQWdCRyxNQUFoQixDQUF1QixVQUFBQyxJQUFJLEVBQUk7QUFDckMsZUFBT0EsSUFBSSxDQUFDQyxRQUFMLEtBQWtCLEdBQXpCO0FBQ0EsT0FGTSxDQUFQO0FBR0EsS0FiTTtBQWNQRSxXQWRPLHFCQWNHO0FBQ1QsYUFBTyxLQUFLQyxJQUFMLENBQVVMLE1BQVYsQ0FBaUIsVUFBQUMsSUFBSSxFQUFJO0FBQy9CLGVBQU9BLElBQUksQ0FBQ0ssUUFBTCxHQUFnQixHQUF2QjtBQUNBLE9BRk0sQ0FBUDtBQUdBLEtBbEJNO0FBbUJQQyxVQW5CTyxvQkFtQkU7QUFDUixhQUFPLEtBQUtGLElBQUwsQ0FBVUwsTUFBVixDQUFpQixVQUFBQyxJQUFJLEVBQUk7QUFDL0IsZUFBT0EsSUFBSSxDQUFDSyxRQUFMLEtBQWtCLEdBQXpCO0FBQ0EsT0FGTSxDQUFQO0FBR0EsS0F2Qk0sR0FuRE07O0FBNEVkRSxTQUFPLEVBQUU7QUFDUkMsYUFEUSxxQkFDRUMsS0FERixFQUNTO0FBQ2hCLFdBQUtqQixRQUFMLEdBQWdCaUIsS0FBaEI7QUFDQSxLQUhPLEVBNUVLLEUiLCJmaWxlIjoiNzkuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG4vL1xyXG5cclxuaW1wb3J0IGZMaXN0IGZyb20gJy4uLy4uL2NvbXBvbmVudHMvY29tbW9uL2YtbGlzdC52dWUnO1xyXG5pbXBvcnQgeyBtYXBTdGF0ZSB9IGZyb20gJ3Z1ZXgnO1xyXG5leHBvcnQgZGVmYXVsdCB7XHJcblx0Y29tcG9uZW50czoge1xyXG5cdFx0Zkxpc3RcclxuXHR9LFxyXG5cdGRhdGEoKSB7XHJcblx0XHRyZXR1cm4ge1xyXG5cdFx0XHR0YWJJbmRleDogMCxcclxuXHRcdFx0dGFiQmFyczogW1xyXG5cdFx0XHRcdHtcclxuXHRcdFx0XHRcdG5hbWU6ICfkuIvovb3liJfooagnXHJcblx0XHRcdFx0fSxcclxuXHRcdFx0XHR7XHJcblx0XHRcdFx0XHRuYW1lOiAn5LiK5Lyg5YiX6KGoJ1xyXG5cdFx0XHRcdH1cclxuXHRcdFx0XVxyXG5cdFx0XHQvLyBsaXN0OiBbXHJcblx0XHRcdC8vIFx0e1xyXG5cdFx0XHQvLyBcdFx0dHlwZTogJ2ltYWdlJyxcclxuXHRcdFx0Ly8gXHRcdG5hbWU6ICflm77niYcxLmpwZycsXHJcblx0XHRcdC8vIFx0XHRkYXRhOiAnaHR0cHM6Ly9pbWFnZXMucGV4ZWxzLmNvbS9waG90b3MvNTMyNzAwNy9wZXhlbHMtcGhvdG8tNTMyNzAwNy5qcGVnP2F1dG89Y29tcHJlc3MmY3M9dGlueXNyZ2ImZHByPTEmdz01MDAnLFxyXG5cdFx0XHQvLyBcdFx0Y3JlYXRlX3RpbWU6ICcyMDIwLTEwLTIxIDA4OjAwJyxcclxuXHRcdFx0Ly8gXHRcdGNoZWNrZWQ6IGZhbHNlLFxyXG5cdFx0XHQvLyBcdFx0ZG93bmxvYWQ6IDEwMFxyXG5cdFx0XHQvLyBcdH0sXHJcblx0XHRcdC8vIFx0e1xyXG5cdFx0XHQvLyBcdFx0dHlwZTogJ2ltYWdlJyxcclxuXHRcdFx0Ly8gXHRcdG5hbWU6ICflm77niYcyLmpwZycsXHJcblx0XHRcdC8vIFx0XHRkYXRhOiAnaHR0cHM6Ly9pbWFnZXMucGV4ZWxzLmNvbS9waG90b3MvNTMyNzkzMS9wZXhlbHMtcGhvdG8tNTMyNzkzMS5qcGVnP2F1dG89Y29tcHJlc3MmY3M9dGlueXNyZ2ImZHByPTEmdz01MDAnLFxyXG5cdFx0XHQvLyBcdFx0Y3JlYXRlX3RpbWU6ICcyMDIwLTEwLTIxIDA4OjAwJyxcclxuXHRcdFx0Ly8gXHRcdGNoZWNrZWQ6IGZhbHNlLFxyXG5cdFx0XHQvLyBcdFx0ZG93bmxvYWQ6IDgwXHJcblx0XHRcdC8vIFx0fSxcclxuXHRcdFx0Ly8gXHR7XHJcblx0XHRcdC8vIFx0XHR0eXBlOiAnaW1hZ2UnLFxyXG5cdFx0XHQvLyBcdFx0bmFtZTogJ+WbvueJhzMuanBnJyxcclxuXHRcdFx0Ly8gXHRcdGRhdGE6ICdodHRwczovL2ltYWdlcy5wZXhlbHMuY29tL3Bob3Rvcy81MzI3MDA3L3BleGVscy1waG90by01MzI3MDA3LmpwZWc/YXV0bz1jb21wcmVzcyZjcz10aW55c3JnYiZkcHI9MSZ3PTUwMCcsXHJcblx0XHRcdC8vIFx0XHRjcmVhdGVfdGltZTogJzIwMjAtMTAtMjEgMDg6MDAnLFxyXG5cdFx0XHQvLyBcdFx0Y2hlY2tlZDogZmFsc2UsXHJcblx0XHRcdC8vIFx0XHRkb3dubG9hZDogMTAwXHJcblx0XHRcdC8vIFx0fSxcclxuXHRcdFx0Ly8gXHR7XHJcblx0XHRcdC8vIFx0XHR0eXBlOiAnaW1hZ2UnLFxyXG5cdFx0XHQvLyBcdFx0bmFtZTogJ+WbvueJhzQuanBnJyxcclxuXHRcdFx0Ly8gXHRcdGRhdGE6ICdodHRwczovL2ltYWdlcy5wZXhlbHMuY29tL3Bob3Rvcy81MzI3OTMxL3BleGVscy1waG90by01MzI3OTMxLmpwZWc/YXV0bz1jb21wcmVzcyZjcz10aW55c3JnYiZkcHI9MSZ3PTUwMCcsXHJcblx0XHRcdC8vIFx0XHRjcmVhdGVfdGltZTogJzIwMjAtMTAtMjEgMDg6MDAnLFxyXG5cdFx0XHQvLyBcdFx0Y2hlY2tlZDogZmFsc2UsXHJcblx0XHRcdC8vIFx0XHRkb3dubG9hZDogNzBcclxuXHRcdFx0Ly8gXHR9XHJcblx0XHRcdC8vIF1cclxuXHRcdH07XHJcblx0fSxcclxuXHRjb21wdXRlZDoge1xyXG5cdFx0Li4ubWFwU3RhdGUoe1xyXG5cdFx0XHR1cGxvYWRMaXN0OiBzdGF0ZSA9PiBzdGF0ZS51cGxvYWRMaXN0XHJcblx0XHR9KSxcclxuXHRcdHVwbG9hZGluZygpIHtcclxuXHRcdFx0cmV0dXJuIHRoaXMudXBsb2FkTGlzdC5maWx0ZXIoaXRlbSA9PiB7XHJcblx0XHRcdFx0cmV0dXJuIGl0ZW0ucHJvZ3Jlc3MgPCAxMDA7XHJcblx0XHRcdH0pO1xyXG5cdFx0fSxcclxuXHRcdHVwbG9hZGVkKCkge1xyXG5cdFx0XHRyZXR1cm4gdGhpcy51cGxvYWRMaXN0LmZpbHRlcihpdGVtID0+IHtcclxuXHRcdFx0XHRyZXR1cm4gaXRlbS5wcm9ncmVzcyA9PT0gMTAwO1xyXG5cdFx0XHR9KTtcclxuXHRcdH0sXHJcblx0XHRkb3duaW5nKCkge1xyXG5cdFx0XHRyZXR1cm4gdGhpcy5saXN0LmZpbHRlcihpdGVtID0+IHtcclxuXHRcdFx0XHRyZXR1cm4gaXRlbS5kb3dubG9hZCA8IDEwMDtcclxuXHRcdFx0fSk7XHJcblx0XHR9LFxyXG5cdFx0ZG93bmVkKCkge1xyXG5cdFx0XHRyZXR1cm4gdGhpcy5saXN0LmZpbHRlcihpdGVtID0+IHtcclxuXHRcdFx0XHRyZXR1cm4gaXRlbS5kb3dubG9hZCA9PT0gMTAwO1xyXG5cdFx0XHR9KTtcclxuXHRcdH1cclxuXHR9LFxyXG5cdG1ldGhvZHM6IHtcclxuXHRcdGNoYW5nZVRhYihpbmRleCkge1xyXG5cdFx0XHR0aGlzLnRhYkluZGV4ID0gaW5kZXg7XHJcblx0XHR9XHJcblx0fVxyXG59O1xyXG4iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///79\n");
 
 /***/ }),
 /* 80 */
