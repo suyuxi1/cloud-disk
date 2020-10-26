@@ -373,9 +373,46 @@ export default {
 				case '下载':
 					this.download();
 					break;
+				case '分享':
+					//增加“分享”点击事件，调用share方法去请求接口生成一个分享链接，
+					//然后把全选置为false，目的是让下面的操作条隐藏（没有文件被选中，底部操作条是不会弹出的）
+					this.share();
+					this.handleCheckAll(false);
+					break;
 				default:
 					break;
 			}
+		},
+		share() {
+			this.$H
+				.post(
+					'/share/create',
+					{
+						file_id: this.checkList[0].id
+					},
+					{ token: true }
+				)
+				.then(res => {
+					uni.showModal({
+						content: res,
+						showCancel: false,
+						success: result => {
+							//不能再用res，会和前面冲突
+							// #ifndef H5
+							uni.setClipboardData({
+								//复制到剪贴板
+								data: res,
+								success: () => {
+									uni.showToast({
+										title: '复制成功',
+										icon: 'none'
+									});
+								}
+							});
+							// #endif
+						}
+					});
+				});
 		},
 		//下载
 		download() {
