@@ -17,7 +17,7 @@ export default new Vuex.Store({
 		getShareUrl({
 			state
 		}) {
-			//#ifdef H5
+
 			uni.getClipboardData({
 				success: (res) => {
 					//通过前面结果可以看到剪贴的链接是以http://127.0.0.1:7001/开头的，接口上线了这个地址要改
@@ -44,6 +44,7 @@ export default new Vuex.Store({
 					}
 				}
 			});
+
 		},
 		// //清除传输记录
 		clearList({
@@ -145,6 +146,14 @@ export default new Vuex.Store({
 			if (user) {
 				state.user = JSON.parse(user)
 				state.token = state.user.token
+			}
+		},
+		initList({
+			state
+		}) {
+			let user = uni.getStorageSync('user')
+			if (!user) {
+				
 			}
 		},
 		updateSize({

@@ -21,7 +21,7 @@
     // "terminal.integrated.shell.windows": "D:\\ProgramFiles\\Git\\bin\\bash.exe",
     //editor相关配置
     //禁用小地图
-    "editor.minimap.enabled": false,
+    "editor.minimap.enabled": true,
     //编辑区字体大小
     "editor.fontSize": 16,
     //编辑区字体跟随鼠标滚轮改变大小

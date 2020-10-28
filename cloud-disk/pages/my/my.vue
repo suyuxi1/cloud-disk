@@ -12,7 +12,7 @@
 		</view>
 		<view class="bg-light" style="height: 20rpx;"></view>
 		<view class="p-3">
-			<progress class="mb-3" percent="40" active stroke-width="3" />
+			<progress class="mb-3" :percent="progress" active stroke-width="3" />
 			<view class="flex align-center justify-between font">
 				<text class="text-light-muted">总：{{ user.total_size | bytesToSize }}</text>
 				<text class="text-warning">已用：{{ user.used_size | bytesToSize }}</text>
@@ -33,7 +33,9 @@
 import { mapState } from 'vuex';
 export default {
 	data() {
-		return {};
+		return {
+			percent: 0
+		};
 	},
 	onLoad() {
 		console.log(this.$store.state.user);

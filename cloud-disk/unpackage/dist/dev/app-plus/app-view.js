@@ -3568,7 +3568,12 @@ var render = function() {
         [
           _c("v-uni-progress", {
             staticClass: _vm._$g(9, "sc"),
-            attrs: { percent: "40", active: true, "stroke-width": "3", _i: 9 }
+            attrs: {
+              percent: _vm._$g(9, "a-percent"),
+              active: true,
+              "stroke-width": "3",
+              _i: 9
+            }
           }),
           _c(
             "v-uni-view",

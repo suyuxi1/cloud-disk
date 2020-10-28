@@ -432,16 +432,33 @@ export default {
 					//创建下载任务
 					this.$store.dispatch('createDownloadJob', obj);
 					let url = item.url;
+					console.log('>>>>>>>>>>>>>>>' + url);
 					let d = uni.downloadFile({
 						url,
 						success: res => {
 							if (res.statusCode === 200) {
 								console.log('下载成功', res);
-								// #ifndef H5
+								let platform = uni.getSystemInfoSync().platform;
+								let tempFile = res.tempFilePath;
+								if (platform === 'ios') {
+									tempFile = escape(tempFile);
+								}
 								uni.saveFile({
-									tempFilePath: item.tempFilePath
+									tempFilePath: tempFile,
+									success: red => {
+										uni.showToast({
+											icon: 'none',
+											mask: true,
+											title: '文件已经保存并即将打开' + red.savedFilePath,
+											duration: 1500
+										});
+										setTimeout(() => {
+											uni.openDocument({
+												filePath: red.savedFilePath
+											});
+										});
+									}
 								});
-								// #endif
 							}
 						}
 					});
@@ -517,6 +534,26 @@ export default {
 							//选择图片成功，就循环异步调用上传接口
 							res.tempFiles.forEach(item => {
 								this.upload(item, 'image');
+							});
+							s;
+						}
+					});
+					break;
+				case '上传视频':
+					uni.chooseVideo({
+						count: 1,
+						success: res => {
+							console.log(res);
+							let name = '';
+							let size = 0;
+							name = res.tempFilePath.substring(res.tempFilePath.lastIndexOf('/') + 1);
+							size = res.size;
+
+							this.upload({
+								path: res.tempFilePath,
+								name,
+								type: 'video',
+								size
 							});
 						}
 					});
